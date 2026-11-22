@@ -1,0 +1,7 @@
+{
+  "evidence": [
+    "kubelet: Failed to pull image harbor.example.test/mirror/traefik:v3.0 for pod traefik-demo: registry request timed out",
+    "kubelet: Back-off pulling image harbor.example.test/mirror/traefik:v3.0",
+    "SYNTHETIC KYVERNO POLICY EXCERPT — fictional demo data, not an admission audit record. This excerpt does not establish whether this policy mutated traefik-demo.\napiVersion: kyverno.io/v1\nkind: ClusterPolicy\nmetadata:\n  name: synthetic-harbor-mirror\nspec:\n  rules:\n    - name: rewrite-matching-images\n      match:\n        any:\n          - resources:\n              kinds: [Pod]\n      mutate:\n        foreach:\n          - list: request.object.spec.containers\n            patchStrategicMerge:\n              spec:\n                containers:\n                  - name: '{{ element.name }}'\n                    image: \"{{ regex_replace_all('^registry[.]example[.]test/(.*)$', element.image, 'harbor.example.test/mirror/$1') }}\"\n# Example match: registry.example.test/traefik:v3.0 becomes harbor.example.test/mirror/traefik:v3.0.\n# This rewrite says nothing about why a Harbor request timed out."
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "evidence": [
+    "kubelet: Failed to pull image harbor.example.test/mirror/traefik:v3.0 for pod traefik-demo: registry request timed out",
+    "kubelet: Back-off pulling image harbor.example.test/mirror/traefik:v3.0"
+  ]
+}
