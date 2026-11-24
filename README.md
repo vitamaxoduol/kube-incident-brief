@@ -4,6 +4,9 @@ Paste Kubernetes events, logs, or policy excerpts into `POST /incidents/analyze`
 to get a short brief with evidence citations. FastAPI, Pydantic v2, and the
 official Google Gen AI SDK; local execution with one provider and one endpoint.
 
+Read the [portfolio case study](docs/portfolio-case-study.md) for the problem,
+implementation decisions, schema-format bug, verification, and limitations.
+
 Sample request (fictional data):
 
 ```json
