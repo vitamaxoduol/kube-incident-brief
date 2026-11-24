@@ -54,6 +54,12 @@ All tests run offline without credentials. They substitute the provider or use
 an HTTP mock transport through the real SDK, and exercise the actual response
 validation, request limits, missing key, timeouts, and upstream failures.
 
+The [GitHub Actions workflow](.github/workflows/tests.yml) runs the same suite
+on pushes and pull requests using Python 3.12. It installs `requirements.txt`
+and runs `python -m pytest -q`; no `.env` file or Gemini secret is needed.
+After pushing the workflow, view results in the repository's **Actions** tab
+or the pull request's **Checks** tab.
+
 To try Gemini, copy the environment template and fill in your own key:
 
 ```bash
